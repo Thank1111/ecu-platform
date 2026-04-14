@@ -95,6 +95,23 @@ You MUST return a single valid JSON object matching this schema exactly. No mark
     ],
     "recommended_track": "string — name of the most recommended track"
   },
+  "company_target": {
+    "company_goal": "string — summary of the company's future target",
+    "timeline_to_floor_months": number,
+    "timeline_to_target_months": number,
+    "summary": "string — overall comparison between floor and target gaps",
+    "gaps": [
+      {
+        "skill_name": "string",
+        "current_level": "none | basic | intermediate | advanced | expert",
+        "national_floor": "basic | intermediate | advanced | expert",
+        "company_target": "basic | intermediate | advanced | expert",
+        "gap_to_floor": "string — e.g. 'need 2 levels up'",
+        "gap_to_target": "string — e.g. 'need 4 levels up'",
+        "recommended_action": "string"
+      }
+    ]
+  },
   "skill_gap": {
     "summary": "string — 1-2 sentences summarizing the overall gap",
     "gaps": [
@@ -331,10 +348,16 @@ Output:
 - All currency in THB per month if salary is mentioned.
 - curriculum_modules must have all 4 keys (required, elective, lab, internship) — empty array [] is allowed.`
 
-export function buildUserPrompt(sector: string, input: string, currentSkills?: string): string {
-  const skillSection = currentSkills?.trim()
-    ? `\nCurrent Employee Skills:\n${currentSkills}\n\nAnalyze the gap between current skills and required skills. Include "skill_gap" in your output.`
-    : '\n\nNo current employee skills provided. Omit the "skill_gap" field from your output.'
+export function buildUserPrompt(sector: string, input: string, currentSkills?: string, companyTarget?: string): string {
+  let skillSection = '\n\nNo current employee skills provided. Omit "skill_gap" and "company_target" fields from your output.'
+
+  if (currentSkills?.trim()) {
+    skillSection = `\nCurrent Employee Skills:\n${currentSkills}\n\nAnalyze the gap between current skills and required skills. Include "skill_gap" in your output.`
+
+    if (companyTarget?.trim()) {
+      skillSection += `\n\nCompany Future Target:\n${companyTarget}\n\nCalculate TWO layers of gap:\n1. Gap from current → national floor (TPQI minimum required level)\n2. Gap from current → company target (may be higher than national floor)\nInclude "company_target" analysis in your output.`
+    }
+  }
 
   return `Sector: ${sector}
 

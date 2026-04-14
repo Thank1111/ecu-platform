@@ -34,6 +34,7 @@ export default function InputForm() {
   const [sector, setSector] = useState('')
   const [input, setInput] = useState('')
   const [currentSkills, setCurrentSkills] = useState('')
+  const [companyTarget, setCompanyTarget] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
@@ -57,7 +58,7 @@ export default function InputForm() {
       const res = await fetch('/api/translate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sector, input, current_skills: currentSkills }),
+        body: JSON.stringify({ sector, input, current_skills: currentSkills, company_target: companyTarget }),
       })
 
       const json = await res.json()
@@ -113,6 +114,21 @@ export default function InputForm() {
           value={currentSkills}
           onChange={(e) => setCurrentSkills(e.target.value)}
           placeholder="เช่น พนักงานมี Python basic, Excel intermediate แต่ยังไม่มี SQL และ Machine Learning..."
+          rows={3}
+          className="w-full resize-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+        />
+      </div>
+
+      {/* Company Target */}
+      <div className="space-y-2">
+        <label className="text-sm font-medium text-slate-700">
+          เป้าหมายบริษัทในอนาคต
+          <span className="ml-1 text-xs font-normal text-slate-400">(ไม่บังคับ — ใส่เพื่อเปรียบเทียบ gap 2 ชั้น)</span>
+        </label>
+        <textarea
+          value={companyTarget}
+          onChange={(e) => setCompanyTarget(e.target.value)}
+          placeholder="เช่น ภายใน 2 ปี ต้องการให้พนักงานทุกคนมี Python intermediate และ SQL advanced เพื่อรองรับการขยาย data team..."
           rows={3}
           className="w-full resize-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
         />

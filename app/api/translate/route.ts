@@ -8,7 +8,7 @@ export async function POST(request: Request) {
 
   try {
     const body: TranslateRequest = await request.json()
-    const { input, current_skills } = body
+    const { input, current_skills, company_target } = body
     sector = body.sector ?? ''
 
     if (!input || !sector) {
@@ -26,7 +26,7 @@ export async function POST(request: Request) {
       messages: [
         {
           role: 'user',
-          content: buildUserPrompt(sector, input, current_skills),
+          content: buildUserPrompt(sector, input, current_skills, company_target),
         },
       ],
     })
