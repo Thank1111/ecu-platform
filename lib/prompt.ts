@@ -352,10 +352,10 @@ export function buildUserPrompt(sector: string, input: string, currentSkills?: s
   let skillSection = '\n\nNo current employee skills provided. Omit "skill_gap" and "company_target" fields from your output.'
 
   if (currentSkills?.trim()) {
-    skillSection = `\nCurrent Employee Skills:\n${currentSkills}\n\nAnalyze the gap between current skills and required skills. Include "skill_gap" in your output.`
-
     if (companyTarget?.trim()) {
-      skillSection += `\n\nCompany Future Target:\n${companyTarget}\n\nCalculate TWO layers of gap:\n1. Gap from current → national floor (TPQI minimum required level)\n2. Gap from current → company target (may be higher than national floor)\nInclude "company_target" analysis in your output.`
+      skillSection = `\nCurrent Employee Skills:\n${currentSkills}\n\nAnalyze the gap between current skills and required skills. Include "skill_gap" in your output.\n\nCompany Future Target:\n${companyTarget}\n\nCalculate TWO layers of gap:\n1. Gap from current → national floor (TPQI minimum required level)\n2. Gap from current → company target (may be higher than national floor)\nInclude "company_target" analysis in your output.`
+    } else {
+      skillSection = `\nCurrent Employee Skills:\n${currentSkills}\n\nAnalyze the gap between current skills and required skills. Include "skill_gap" in your output. Omit "company_target" field entirely.`
     }
   }
 
