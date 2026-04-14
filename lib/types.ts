@@ -67,6 +67,20 @@ export interface UpskillPathway {
   recommended_track: string
 }
 
+export interface SkillGapItem {
+  skill_name: string
+  current_level: 'none' | 'basic' | 'intermediate' | 'advanced' | 'expert'
+  required_level: 'basic' | 'intermediate' | 'advanced' | 'expert'
+  gap_severity: 'critical' | 'moderate' | 'minor'
+  recommended_action: string
+}
+
+export interface SkillGap {
+  summary: string
+  gaps: SkillGapItem[]
+  strengths: string[]
+}
+
 export interface TranslationOutput {
   role_title: string
   demand_count: number
@@ -76,12 +90,14 @@ export interface TranslationOutput {
   scorecard: UniversityScore[]
   pathway: Pathway
   upskill: UpskillPathway
+  skill_gap?: SkillGap
   priority: PriorityItem[]
 }
 
 export interface TranslateRequest {
   sector: string
   input: string
+  current_skills?: string
 }
 
 export interface TranslateResponse {

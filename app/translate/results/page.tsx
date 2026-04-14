@@ -9,6 +9,7 @@ import ScorecardCard from '@/components/results/ScorecardCard'
 import PathwayCard from '@/components/results/PathwayCard'
 import PriorityCard from '@/components/results/PriorityCard'
 import UpskillCard from '@/components/results/UpskillCard'
+import GapCard from '@/components/results/GapCard'
 import type { TranslationOutput } from '@/lib/types'
 
 export default function ResultsPage() {
@@ -61,6 +62,7 @@ export default function ResultsPage() {
 
         {/* Tab content */}
         {activeTab === 'brief' && <BriefCard data={data} />}
+        {activeTab === 'gap' && <GapCard data={data} />}
         {activeTab === 'scorecard' && <ScorecardCard data={data} />}
         {activeTab === 'pathway' && <PathwayCard data={data} />}
         {activeTab === 'upskill' && <UpskillCard data={data} />}

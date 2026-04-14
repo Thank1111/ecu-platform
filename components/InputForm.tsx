@@ -33,6 +33,7 @@ export default function InputForm() {
   const router = useRouter()
   const [sector, setSector] = useState('')
   const [input, setInput] = useState('')
+  const [currentSkills, setCurrentSkills] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
@@ -56,7 +57,7 @@ export default function InputForm() {
       const res = await fetch('/api/translate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sector, input }),
+        body: JSON.stringify({ sector, input, current_skills: currentSkills }),
       })
 
       const json = await res.json()
@@ -98,6 +99,21 @@ export default function InputForm() {
           onChange={(e) => setInput(e.target.value)}
           placeholder="วาง JD, ประกาศรับสมัครงาน หรือข้อมูลความต้องการจากภาคอุตสาหกรรม..."
           rows={6}
+          className="w-full resize-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+        />
+      </div>
+
+      {/* Current Skills */}
+      <div className="space-y-2">
+        <label className="text-sm font-medium text-slate-700">
+          ทักษะพนักงานปัจจุบัน
+          <span className="ml-1 text-xs font-normal text-slate-400">(ไม่บังคับ — ใส่เพื่อวิเคราะห์ Gap)</span>
+        </label>
+        <textarea
+          value={currentSkills}
+          onChange={(e) => setCurrentSkills(e.target.value)}
+          placeholder="เช่น พนักงานมี Python basic, Excel intermediate แต่ยังไม่มี SQL และ Machine Learning..."
+          rows={3}
           className="w-full resize-none rounded-xl border border-slate-200 bg-white px-4 py-3 text-sm text-slate-900 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
         />
       </div>

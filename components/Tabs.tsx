@@ -2,6 +2,7 @@
 
 const TABS = [
   { id: 'brief', label: 'ภาพรวม' },
+  { id: 'gap', label: 'Gap Analysis' },
   { id: 'scorecard', label: 'Scorecard' },
   { id: 'pathway', label: 'Pathway' },
   { id: 'upskill', label: 'Upskill' },

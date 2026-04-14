@@ -95,6 +95,19 @@ You MUST return a single valid JSON object matching this schema exactly. No mark
     ],
     "recommended_track": "string — name of the most recommended track"
   },
+  "skill_gap": {
+    "summary": "string — 1-2 sentences summarizing the overall gap",
+    "gaps": [
+      {
+        "skill_name": "string",
+        "current_level": "none | basic | intermediate | advanced | expert",
+        "required_level": "basic | intermediate | advanced | expert",
+        "gap_severity": "critical | moderate | minor",
+        "recommended_action": "string — specific course or action to close this gap"
+      }
+    ],
+    "strengths": ["string — skills the employee already has at sufficient level"]
+  },
   "upskill": {
     "target": "string — description of the worker target group (e.g. 'ช่างที่ทำงานอยู่แล้วในอุตสาหกรรมการบิน')",
     "modules": [
@@ -318,11 +331,15 @@ Output:
 - All currency in THB per month if salary is mentioned.
 - curriculum_modules must have all 4 keys (required, elective, lab, internship) — empty array [] is allowed.`
 
-export function buildUserPrompt(sector: string, input: string): string {
+export function buildUserPrompt(sector: string, input: string, currentSkills?: string): string {
+  const skillSection = currentSkills?.trim()
+    ? `\nCurrent Employee Skills:\n${currentSkills}\n\nAnalyze the gap between current skills and required skills. Include "skill_gap" in your output.`
+    : '\n\nNo current employee skills provided. Omit the "skill_gap" field from your output.'
+
   return `Sector: ${sector}
 
 Industry Demand Input:
-${input}
+${input}${skillSection}
 
 Translate this demand into structured educational output for Thai universities. Return the JSON object only.`
 }
