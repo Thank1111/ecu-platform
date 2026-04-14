@@ -4,6 +4,7 @@ const TABS = [
   { id: 'brief', label: 'ภาพรวม' },
   { id: 'scorecard', label: 'Scorecard' },
   { id: 'pathway', label: 'Pathway' },
+  { id: 'upskill', label: 'Upskill' },
   { id: 'priority', label: 'Priority' },
 ] as const
 

@@ -67,6 +67,25 @@ export const FALLBACK_AVIATION: TranslationOutput = {
     ],
     recommended_track: 'Fast-track Certificate (CAAT Part-147)',
   },
+  upskill: {
+    target: 'ช่างอากาศยานที่ทำงานอยู่แล้วในสายการบินหรือ MRO ที่ต้องการต่ออายุใบอนุญาต CAAT หรืออัปเกรดจาก Cat A เป็น B1/B2',
+    modules: [
+      { module_name: 'CAAT Part-66 B1 Refresher', duration_weeks: 4, format: 'onsite', description: 'ทบทวนและสอบ B1 license สำหรับช่างที่มี Cat A อยู่แล้ว' },
+      { module_name: 'Avionics Systems Update (B2)', duration_weeks: 6, format: 'hybrid', description: 'อัปเดตระบบ avionics ใหม่สำหรับ A320neo และ B787' },
+      { module_name: 'Safety Management Systems', duration_weeks: 2, format: 'online', description: 'SMS และ Human Factors ตาม ICAO Annex 6 ฉบับล่าสุด' },
+    ],
+    options: [
+      {
+        track: 'CAAT Part-66 License Upgrade Program',
+        duration_months: 3,
+        format: 'hybrid',
+        institutions: ['CATC', 'KMITL'],
+        funding: 'กองทุนพัฒนาฝีมือแรงงาน + employer co-funding (Thai Airways, Bangkok Airways)',
+        notes: 'เหมาะกับช่างที่มี Cat A และต้องการ upgrade เป็น B1/B2 เร็วที่สุด',
+      },
+    ],
+    recommended_track: 'CAAT Part-66 License Upgrade Program',
+  },
   priority: [
     {
       level: 'urgent',
@@ -141,6 +160,25 @@ export const FALLBACK_DRONE: TranslationOutput = {
       },
     ],
     recommended_track: 'Micro-credential: Agricultural Drone Operator',
+  },
+  upskill: {
+    target: 'เกษตรกรและเจ้าหน้าที่ส่งเสริมการเกษตรที่ต้องการเรียนรู้การใช้โดรนเกษตรและระบบ precision farming',
+    modules: [
+      { module_name: 'โดรนเกษตรเบื้องต้น', duration_weeks: 2, format: 'onsite', description: 'ฝึกบินโดรน DJI Agras และการบำรุงรักษาเบื้องต้น' },
+      { module_name: 'Precision Farming with Sensors', duration_weeks: 2, format: 'hybrid', description: 'การแปลผล NDVI และการวางแผนการพ่นยา' },
+      { module_name: 'CAOT License Exam Prep', duration_weeks: 1, format: 'online', description: 'เตรียมสอบใบอนุญาตนักบินอากาศยานซึ่งบังคับบัญชาไม่ได้' },
+    ],
+    options: [
+      {
+        track: 'Upskill: Smart Farmer Drone Certificate',
+        duration_months: 2,
+        format: 'weekend',
+        institutions: ['KU', 'KKU', 'CMU'],
+        funding: 'กรมส่งเสริมการเกษตร + กรมพัฒนาฝีมือแรงงาน',
+        notes: 'เรียนวันเสาร์-อาทิตย์ รุ่นละ 30 คน จัดที่สำนักงานเกษตรจังหวัด',
+      },
+    ],
+    recommended_track: 'Upskill: Smart Farmer Drone Certificate',
   },
   priority: [
     {
@@ -225,6 +263,25 @@ export const FALLBACK_LOGISTICS: TranslationOutput = {
       },
     ],
     recommended_track: 'HE Sandbox: Warehouse Automation Certificate',
+  },
+  upskill: {
+    target: 'พนักงานคลังสินค้าที่ทำงานอยู่แล้วในบริษัท logistics ที่กำลัง transition ไปสู่ระบบ automated warehouse',
+    modules: [
+      { module_name: 'PLC Operation Basics', duration_weeks: 3, format: 'onsite', description: 'การอ่านและควบคุม PLC สำหรับพนักงาน operator ที่ไม่มีพื้นฐาน electrical' },
+      { module_name: 'WMS System Operation', duration_weeks: 2, format: 'online', description: 'การใช้งาน Warehouse Management System และการแก้ปัญหาเบื้องต้น' },
+      { module_name: 'AS/RS Troubleshooting', duration_weeks: 3, format: 'hybrid', description: 'การวิเคราะห์และแก้ไขปัญหาระบบ automated storage เบื้องต้น' },
+    ],
+    options: [
+      {
+        track: 'Upskill: Warehouse Automation Operator',
+        duration_months: 2,
+        format: 'hybrid',
+        institutions: ['KMUTT', 'KMITL'],
+        funding: 'กรมพัฒนาฝีมือแรงงาน + DHL/Kerry Express co-funding',
+        notes: 'เรียนในช่วงเย็นวันธรรมดา ไม่กระทบการทำงาน รับรองโดยนายจ้าง',
+      },
+    ],
+    recommended_track: 'Upskill: Warehouse Automation Operator',
   },
   priority: [
     {

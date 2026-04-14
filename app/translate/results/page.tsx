@@ -8,6 +8,7 @@ import BriefCard from '@/components/results/BriefCard'
 import ScorecardCard from '@/components/results/ScorecardCard'
 import PathwayCard from '@/components/results/PathwayCard'
 import PriorityCard from '@/components/results/PriorityCard'
+import UpskillCard from '@/components/results/UpskillCard'
 import type { TranslationOutput } from '@/lib/types'
 
 export default function ResultsPage() {
@@ -62,6 +63,7 @@ export default function ResultsPage() {
         {activeTab === 'brief' && <BriefCard data={data} />}
         {activeTab === 'scorecard' && <ScorecardCard data={data} />}
         {activeTab === 'pathway' && <PathwayCard data={data} />}
+        {activeTab === 'upskill' && <UpskillCard data={data} />}
         {activeTab === 'priority' && <PriorityCard data={data} />}
       </main>
     </div>

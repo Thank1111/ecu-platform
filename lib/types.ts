@@ -44,6 +44,29 @@ export interface PriorityItem {
   action: string
 }
 
+export interface UpskillModule {
+  module_name: string
+  duration_weeks: number
+  format: 'online' | 'onsite' | 'hybrid' | 'weekend'
+  description: string
+}
+
+export interface UpskillPathwayOption {
+  track: string
+  duration_months: number
+  format: 'online' | 'onsite' | 'hybrid' | 'weekend'
+  institutions: string[]
+  funding: string
+  notes: string
+}
+
+export interface UpskillPathway {
+  target: string
+  modules: UpskillModule[]
+  options: UpskillPathwayOption[]
+  recommended_track: string
+}
+
 export interface TranslationOutput {
   role_title: string
   demand_count: number
@@ -52,6 +75,7 @@ export interface TranslationOutput {
   curriculum_modules: CurriculumModules
   scorecard: UniversityScore[]
   pathway: Pathway
+  upskill: UpskillPathway
   priority: PriorityItem[]
 }
 

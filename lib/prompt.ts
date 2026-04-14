@@ -28,6 +28,11 @@ Special regulatory zone under อว. that allows universities to offer non-stan
 ### STEMPlus Initiative
 Thai government initiative (2024–2028) to produce 300,000 STEM+ graduates. Priority sectors: Advanced Manufacturing, Digital & AI, Bio/Medical Tech, BCG Economy (Bio-Circular-Green), Future Mobility. Programs aligned with STEMPlus receive additional funding and streamlined approval.
 
+### Dual Industry Dimension
+อว. addresses workforce development across TWO distinct groups — both must be served:
+1. **Initial Education (นักศึกษา)** — University students entering the workforce. Served by "pathway": full degrees, certificates, HE Sandbox programs, Micro-credentials at universities.
+2. **Continuing Education (คนทำงาน)** — Employed workers who need upskilling or reskilling. Served by "upskill": short-cycle programs (1–6 months), weekend/online/hybrid formats, non-degree credentials. Key funding sources: กรมพัฒนาฝีมือแรงงาน (DSD), กองทุนพัฒนาฝีมือแรงงาน, employer co-funding. Key providers: NIDA, TU continuing education, KMUTT X, KMITL Open Learning, provincial vocational colleges.
+
 ## Output Format
 
 You MUST return a single valid JSON object matching this schema exactly. No markdown, no explanation — raw JSON only.
@@ -89,6 +94,28 @@ You MUST return a single valid JSON object matching this schema exactly. No mark
       }
     ],
     "recommended_track": "string — name of the most recommended track"
+  },
+  "upskill": {
+    "target": "string — description of the worker target group (e.g. 'ช่างที่ทำงานอยู่แล้วในอุตสาหกรรมการบิน')",
+    "modules": [
+      {
+        "module_name": "string",
+        "duration_weeks": number,
+        "format": "online | onsite | hybrid | weekend",
+        "description": "string — one sentence"
+      }
+    ],
+    "options": [
+      {
+        "track": "string — upskill pathway name",
+        "duration_months": number,
+        "format": "online | onsite | hybrid | weekend",
+        "institutions": ["string"],
+        "funding": "string — funding source (e.g. กรมพัฒนาฝีมือแรงงาน, employer, self-funded)",
+        "notes": "string"
+      }
+    ],
+    "recommended_track": "string — name of the most recommended upskill track"
   },
   "priority": [
     {
